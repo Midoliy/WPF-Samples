@@ -1,0 +1,29 @@
+﻿<Window x:Class="ICommand_sample.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:ICommand_sample.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="200" Width="400">
+    <Window.DataContext>
+        <vm:MainWindowViewModel />
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <Viewbox Grid.Row="1" Grid.Column="0" >
+            <Label Content="{Binding Number.Value}" />
+        </Viewbox>
+        <Button Command="{Binding Command}" Grid.Row="1" Grid.Column="1" />
+
+    </Grid>
+</Window>
