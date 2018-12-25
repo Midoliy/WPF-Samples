@@ -1,0 +1,36 @@
+﻿<Window x:Class="IValueConverter_sample.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IValueConverter_sample.View"
+        xmlns:vm="clr-namespace:IValueConverter_sample.ViewModel"
+        xmlns:cv="clr-namespace:IValueConverter_sample.Model.ValueConverter"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="200" Width="400">
+    <Window.Resources>
+        <cv:IntToBrushConverter x:Key="BrushConverter" />
+    </Window.Resources>
+    <Window.DataContext>
+        <vm:MainWindowViewModel />
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="100*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="100*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="1" Grid.Column="1" Content="{Binding Number.Value}" 
+               Background="{Binding Number.Value, Converter={StaticResource BrushConverter}}"/>
+        <Button Grid.Row="1" Grid.Column="3" Command="{Binding Command}"/>
+
+    </Grid>
+</Window>
