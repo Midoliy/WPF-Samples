@@ -6,8 +6,12 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
         xmlns:local="clr-namespace:Behavior_sample"
         xmlns:b="clr-namespace:Behavior_sample.View.Behavior"
+        xmlns:vm="clr-namespace:Behavior_sample.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="200" Width="400">
+    <Window.DataContext>
+        <vm:MainWindowViewModel />
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
@@ -22,7 +26,7 @@
 
         <Button Grid.Row="1" Grid.Column="1">
             <i:Interaction.Behaviors>
-                <b:MessageBehavior Message="Test Message"  />
+                <b:MessageBehavior Message="{Binding Message}"  />
             </i:Interaction.Behaviors>
         </Button>
         

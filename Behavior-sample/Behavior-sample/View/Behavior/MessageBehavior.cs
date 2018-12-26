@@ -13,15 +13,15 @@ namespace Behavior_sample.View.Behavior
     {
         public string Message
         {
-            get => GetValue(Text) as string;
-            set => SetValue(Text, value);
+            get => GetValue(MessageProperty) as string;
+            set => SetValue(MessageProperty, value);
         }
-        public static readonly DependencyProperty Text;
+        public static readonly DependencyProperty MessageProperty;
 
 
         static MessageBehavior()
         {
-            Text = DependencyProperty.Register("Message", typeof(string), typeof(MessageBehavior), new UIPropertyMetadata(null));
+            MessageProperty = DependencyProperty.Register(nameof(Message), typeof(string), typeof(MessageBehavior), new UIPropertyMetadata(null));
         }
 
         protected override void OnAttached()
