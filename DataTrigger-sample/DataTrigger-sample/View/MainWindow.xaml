@@ -1,0 +1,44 @@
+﻿<Window x:Class="DataTrigger_sample.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataTrigger_sample.View"
+        xmlns:vm="clr-namespace:DataTrigger_sample.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="200" Width="350">
+    <Window.Resources>
+        
+        <vm:MainWindowViewModel x:Key="viewmodel"/>
+
+        <Style x:Key="style" TargetType="TextBlock">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsViewModelEnabled}" Value="true">
+                    <Setter Property="Text" Value="Checked!!" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding IsViewModelEnabled}" Value="false">
+                    <Setter Property="Text" Value="Please press..." />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <CheckBox Grid.Row="1" Grid.Column="1"
+                  DataContext="{StaticResource viewmodel}" IsChecked="{Binding IsViewModelEnabled}">
+            <TextBlock Style="{StaticResource style}" />
+        </CheckBox>
+    </Grid>
+</Window>
